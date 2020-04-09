@@ -1,0 +1,25 @@
+td{
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  border: 2px solid black;
+  font-size: 25px;
+}
+
+.board{
+  border: 5px solid black;
+  padding: 5px;
+}
+
+.right{
+  border-right: 5px solid black;
+}
+
+.bottom{
+  border-bottom: 5px solid black;
+}
+
+.rb{
+  border-right: 5px solid black;
+  border-bottom: 5px solid black;
+}
