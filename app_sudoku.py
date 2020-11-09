@@ -1,8 +1,8 @@
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
-from utility import removeDot
-from sudoku import solve, grid_values
-from random import randrange
+from utility import removeDot, grid_values
+from sudoku import solve
+from random import randint
 from datetime import datetime
 
 app = Flask(__name__)
@@ -24,7 +24,7 @@ class Grid(db.Model):
 @app.route('/')
 def home():
     grid_list = Grid.query.all()
-    grid_id = randrange(len(grid_list))
+    grid_id = randint(1, len(grid_list))
     grid = Grid.query.get(grid_id).grid
     clean_grid = removeDot(grid_values(grid))
     return render_template('start.html', id=grid_id, **clean_grid)
@@ -32,8 +32,8 @@ def home():
 
 @app.route('/solved/<int:grid_id>')
 def solved(grid_id):
-    grid = Grid.query.get(grid_id).grid
-    solved = solve(grid)
+    to_solve = Grid.query.get(grid_id).grid
+    solved = solve(to_solve)
     return render_template('solved.html', **solved)
 
 

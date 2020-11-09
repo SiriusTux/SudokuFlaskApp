@@ -1,53 +1,46 @@
 # -*- coding: utf-8 -*-
-#from gridSudoku import GridSudoku
-#import wx.grid
-#import json
-
-
-def cross(A, B):
-    return [a + b for a in A for b in B]
+from utility import grid_values, cross
 
 
 def parse_grid(grid):
-    # Trasformo una grid in un dict {square : digit} dove digit sono i valori possibili
-    values = dict(
-        (s, digits) for s in squares)  # Parto da una situazione in cui in ogni square ci sono tutti i possibili valori
+    # Trasformo una grid in un dict {square : digit}
+    # dove digit sono i valori possibili
+    # Parto da una situazione in cui in ogni square
+    # ci sono tutti i possibili valori
+    values = dict((s, digits) for s in squares)
     for s, d in grid_values(grid).items():
         if d in digits and not assign(values, s, d):
             return False
     return values
 
 
-def grid_values(grid):
-    # Trasforma una grid in un dict {square : char} dove char è un digits oppure '.'
-    # o '0' se non è definito se il square deve essere vuoto
-    chars = [c for c in grid if c in digits or c in '0.']  # Se trovo altri caratteri in grid es. '|' li elimino
-    assert len(chars) == 81  # Alla fine voglio 81 caratteri, uno per ogni square
-    return dict(zip(squares, chars))
-
-
 def assign(values, s, d):
-    # Assegna allo square s il valore d eliminando tutti gli elementi di values[s] tranne d
-    # e propagando la l'assegnazione secondo i criteri (1) e (2) di def eliminate
+    # Assegna allo square s il valore d eliminando
+    # tutti gli elementi di values[s] tranne d
+    # e propagando la l'assegnazione
+    # secondo i criteri (1) e (2) di def eliminate
     others_values = values[s].replace(d, '')
     if all(eliminate(values, s, d2) for d2 in others_values):
         return values
     else:
         return False
 
+
 def eliminate(values, s, d):
     # Elimina d da values di s
     if d not in values[s]:
         return values  # Già eliminato posso ritornare
     values[s] = values[s].replace(d, '')
-    # (1) Se lo square è ridotto ad un solo valore d2 devo eliminare d2 dai peers di s
+    # (1) Se lo square è ridotto ad un solo valore d2
+    # devo eliminare d2 dai peers di s
     if len(values[s]) == 0:
         return False  # Eliminato l'ultimo elmento
     elif len(values[s]) == 1:
         d2 = values[s]
         if not all(eliminate(values, s2, d2) for s2 in peers[s]):
             return False
-    # (2) Se una unit in uno square s è ridotta ad un solo un valore d, mettiamo d nello square s
+    # (2) Se una unit in uno square s è ridotta ad un
+    # solo un valore d, mettiamo d nello square s
     for u in units[s]:
         dplaces = [s for s in u if d in values[s]]
         if len(dplaces) == 0:
@@ -81,9 +74,12 @@ def solve(grid):
 
 
 def display(values):
-    # Print a schermo delle della griglia del Sudoku, prende in input il dizionario
-    width = 1 + max(len(values[s]) for s in squares)  # Max values aumentato di 1, se ho convergenza è 2
-    line = '+'.join(['-' * (width * 3)] * 3)  # Line di demarcazione orizzontale
+    # Print a schermo delle della griglia del Sudoku,
+    # prende in input il dizionario
+    # Max values aumentato di 1, se ho convergenza è 2
+    width = 1 + max(len(values[s]) for s in squares)
+    #  Line di demarcazione orizzontale
+    line = '+'.join(['-' * (width * 3)] * 3)
     for r in rows:
         print(''.join(values[r + c].center(width) + ('|' if c in '36' else '') for c in cols))
         if r in 'CF':
@@ -104,26 +100,24 @@ unitlist = unit_c + unit_r + unit_sq
 units = dict((s, [u for u in unitlist if s in u]) for s in squares)
 peers = dict((s, set(sum(units[s], [])) - set([s])) for s in squares)
 
-
+'''
 # ------------------------------------------------------------------------------------------------------------------- #
 
-'''def redefine_dictionary(sudoku_dict):
+def redefine_dictionary(sudoku_dict):
     new_digits = [int(digit) - 1 for digit in digits]
     map_letter = dict(zip(rows, new_digits))
     new_keys = {x: (map_letter[x[0]], int(x[1]) - 1) for x in sudoku_dict.keys()}
     return {new_keys[x]: int(sudoku_dict[x]) for x in sudoku_dict.keys()
-            if sudoku_dict[x] != '.' and sudoku_dict[x] != '0'}'''
+            if sudoku_dict[x] != '.' and sudoku_dict[x] != '0'}
 
 
 # ------------------------------------------------------------------------------------------------------------------- #
 # Convert input and output in JSON format
 
-'''def create_json_dictinary(dict):
-    return json.dumps(dict)'''
+def create_json_dictinary(dict):
+    return json.dumps(dict)
 
 # ------------------------------------------------------------------------------------------------------------------- #
-
-
 
 
 # display((solve(grid1)))
@@ -132,8 +126,9 @@ peers = dict((s, set(sum(units[s], [])) - set([s])) for s in squares)
 # display((solve(grid4)))
 # display((solve(test)))
 
-#start = redefine_dictionary(grid_values(hard6))
-#end = redefine_dictionary(solve(hard6))
+# start = redefine_dictionary(grid_values(hard6))
+# end = redefine_dictionary(solve(hard6))
+'''
 
 if __name__ == '__main__':
     print('')
