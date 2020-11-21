@@ -1,17 +1,19 @@
 {% extends 'layout.html' %}
 
-{% block body %}
-
+{% block title %}
     <div class="container" align="center">
-      <div class="jumbotorn">
-        <h1>Here is your Sudoku Solved</h1>
-        <p>Do you want to play again?</p>
-        <a href="/">
-          <button id='brestart' type="button" class="btn btn-primary btn-lg" name="button">Yes</button>
-        </a>
-      </div>
+    <div class="jumbotorn">
+      <h1>Here is your Sudoku Solved</h1>
+      <p>Do you want to play again?</p>
+      <a href="/">
+        <button id='brestart' type="button" class="btn btn-primary btn-lg" name="button">Yes</button>
+      </a>
+    </div>
       <br>
-      
+{% endblock %}
+
+{% block body %}
+      {{ super() }}
       <table class='board' align='center'>
         <tr>
           <td>{{ A1 }}</td>

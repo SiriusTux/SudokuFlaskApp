@@ -146,8 +146,9 @@ if __name__ == '__main__':
     corriere_23_03_2020 = '..8.7....36.9....1.9.1.83...7.......28.....57.......2...37.2.9.4....1.38....9.1..'
     start = grid_values(corriere_23_03_2020)
     end = solve(corriere_23_03_2020)
-    print(start)
-    print(end)
+    #print(start)
+    #print(end)
+    display(start)
     display(end)
 
 '''app = wx.App(0)
