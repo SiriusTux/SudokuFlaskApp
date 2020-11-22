@@ -27,6 +27,7 @@ def home():
     grid_id = randint(1, len(grid_list))
     grid = Grid.query.get(grid_id).grid
     clean_grid = removeDot(grid_values(grid))
+    print(clean_grid)
     return render_template('start.html', id=grid_id, **clean_grid)
 
 
@@ -38,4 +39,4 @@ def solved(grid_id):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='127.0.0.1', port=5000, debug=True)
