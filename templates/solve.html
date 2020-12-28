@@ -1,0 +1,21 @@
+{% from "grid.html" import display_grid %}
+{% extends 'layout.html' %}
+
+{% block title %}
+    <div class="container" align="center">
+      <div class="jumbotorn">
+        <h1>Welcome to Sudoku Solver</h1>
+        <p>{{ description }}</p>
+        <a href="{{ url_for('solved', grid_id=id) }}"">
+          <button id='brestart' type="button" class="btn btn-primary btn-lg" name="button">Solve</button>        
+        </a>
+      </div>
+      <br>
+{% endblock %}
+
+{% block body %}
+      {{ super() }}
+      {{ display_grid(grid) }}
+
+{% endblock %}
+
