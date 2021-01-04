@@ -1,0 +1,134 @@
+{% macro insert_grid(form) %}
+    <form method="POST" action="{{ url_for('new') }}">
+    {{ form.csrf_token }}
+      <table class='board' align='center'>
+        <tr>
+          <td class="first_index"></td>
+          <td class="top_index">1</td>
+          <td class="top_index">2</td>
+          <td class="top_index">3</td>
+          <td class="top_index">4</td>
+          <td class="top_index">5</td>
+          <td class="top_index">6</td>
+          <td class="top_index">7</td>
+          <td class="top_index">8</td>
+          <td class="top_index">9</td>
+        </tr>
+        <tr>
+          <td class="left_index">A</td>
+          <td>{{ form.A1(class="cell") }}</td>
+          <td>{{ form.A2(class="cell") }}</td>
+          <td class='right'>{{ form.A3(class="cell") }}</td>
+          <td>{{ form.A4(class="cell") }}</td>
+          <td>{{ form.A5(class="cell") }}</td>
+          <td class='right'>{{ form.A6(class="cell") }}</td>
+          <td>{{ form.A7(class="cell") }}</td>
+          <td>{{ form.A8(class="cell") }}</td>
+          <td>{{ form.A9(class="cell") }}</td>
+        </tr>
+        <tr>
+          <td class="left_index">B</td>
+          <td>{{ form.B1(class="cell") }}</td>
+          <td>{{ form.B2(class="cell") }}</td>
+          <td class='right'>{{ form.B3(class="cell") }}</td>
+          <td>{{ form.B4(class="cell") }}</td>
+          <td>{{ form.B5(class="cell") }}</td>
+          <td class='right'>{{ form.B6(class="cell") }}</td>
+          <td>{{ form.B7(class="cell") }}</td>
+          <td>{{ form.B8(class="cell") }}</td>
+          <td>{{ form.B9(class="cell") }}</td>
+        </tr>
+        <tr>
+          <td class="left_index">C</td>
+          <td class='bottom'>{{ form.C1(class="cell") }}</td>
+          <td class='bottom'>{{ form.C2(class="cell") }}</td>
+          <td class='rb'>{{ form.C3(class="cell") }}</td>
+          <td class='bottom'>{{ form.C4(class="cell") }}</td>
+          <td class='bottom'>{{ form.C5(class="cell") }}</td>
+          <td class='rb'>{{ form.C6(class="cell") }}</td>
+          <td class='bottom'>{{ form.C7(class="cell") }}</td>
+          <td class='bottom'>{{ form.C8(class="cell") }}</td>
+          <td class='bottom'>{{ form.C9(class="cell") }}</td>
+        </tr>
+        <tr>
+          <td class="left_index">D</td>
+          <td>{{ form.D1(class="cell") }}</td>
+          <td>{{ form.D2(class="cell") }}</td>
+          <td class='right'>{{ form.D3(class="cell") }}</td>
+          <td>{{ form.D4(class="cell") }}</td>
+          <td>{{ form.D5(class="cell") }}</td>
+          <td class='right'>{{ form.D6(class="cell") }}</td>
+          <td>{{ form.D7(class="cell") }}</td>
+          <td>{{ form.D8(class="cell") }}</td>
+          <td>{{ form.D9(class="cell") }}</td>
+        </tr>
+        <tr>
+          <td class="left_index">E</td>
+          <td>{{ form.E1(class="cell") }}</td>
+          <td>{{ form.E2(class="cell") }}</td>
+          <td class='right'>{{ form.E3(class="cell") }}</td>
+          <td>{{ form.E4(class="cell") }}</td>
+          <td>{{ form.E5(class="cell") }}</td>
+          <td class='right'>{{ form.E6(class="cell") }}</td>
+          <td>{{ form.E7(class="cell") }}</td>
+          <td>{{ form.E8(class="cell") }}</td>
+          <td>{{ form.E9(class="cell") }}</td>
+        </tr>
+        <tr>
+          <td class="left_index">F</td>
+          <td class='bottom'>{{ form.F1(class="cell") }}</td>
+          <td class='bottom'>{{ form.F2(class="cell") }}</td>
+          <td class='rb'>{{ form.F3(class="cell") }}</td>
+          <td class='bottom'>{{ form.F4(class="cell") }}</td>
+          <td class='bottom'>{{ form.F5(class="cell") }}</td>
+          <td class='rb'>{{ form.F6(class="cell") }}</td>
+          <td class='bottom'>{{ form.F7(class="cell") }}</td>
+          <td class='bottom'>{{ form.F8(class="cell") }}</td>
+          <td class='bottom'>{{ form.F9(class="cell") }}</td>
+        </tr>
+        <tr>
+          <td class="left_index">G</td>
+          <td>{{ form.G1(class="cell") }}</td>
+          <td>{{ form.G2(class="cell") }}</td>
+          <td class='right'>{{ form.G3(class="cell") }}</td>
+          <td>{{ form.G4(class="cell") }}</td>
+          <td>{{ form.G5(class="cell") }}</td>
+          <td class='right'>{{ form.G6(class="cell") }}</td>
+          <td>{{ form.G7(class="cell") }}</td>
+          <td>{{ form.G8(class="cell") }}</td>
+          <td>{{ form.G9(class="cell") }}</td>
+        </tr>
+        <tr>
+          <td class="left_index">H</td>
+          <td>{{ form.H1(class="cell") }}</td>
+          <td>{{ form.H2(class="cell") }}</td>
+          <td class='right'>{{ form.H3(class="cell") }}</td>
+          <td>{{ form.H4(class="cell") }}</td>
+          <td>{{ form.H5(class="cell") }}</td>
+          <td class='right'>{{ form.H6(class="cell") }}</td>
+          <td>{{ form.H7(class="cell") }}</td>
+          <td>{{ form.H8(class="cell") }}</td>
+          <td>{{ form.H9(class="cell") }}</td>
+        </tr>
+        <tr>
+          <td class="left_index">I</td>
+          <td>{{ form.I1(class="cell") }}</td>
+          <td>{{ form.I2(class="cell") }}</td>
+          <td class='right'>{{ form.I3(class="cell") }}</td>
+          <td>{{ form.I4(class="cell") }}</td>
+          <td>{{ form.I5(class="cell") }}</td>
+          <td class='right'>{{ form.I6(class="cell") }}</td>
+          <td>{{ form.I7(class="cell") }}</td>
+          <td>{{ form.I8(class="cell") }}</td>
+          <td>{{ form.I9(class="cell") }}</td>
+        </tr>
+      </table>
+      <br>
+        <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+                <button type="submit" class="btn btn-primary">Insert</button>
+            </div>
+        </div>
+    </form>
+ </div> 
+{% endmacro %}

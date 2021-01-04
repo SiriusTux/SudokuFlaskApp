@@ -1,0 +1,25 @@
+{% from "insert.html" import insert_grid %}
+{% extends 'layout.html' %}
+
+{% block title %}
+    <div class="container" align="center">
+      <div class="jumbotorn">
+        <h1>Enter new grid!</h1>
+      </div>
+      <br>
+{% endblock %}
+
+{% block body %}
+    {{ super() }}
+    {{ insert_grid(form) }}
+    {% if form.errors %}
+        <div class="container" align="center">
+            <div class="jumbotorn">
+                <h1>Validation Error!</h1>
+                {% for error in form.errors %}
+                    <h4>In cell {{ error }} {{ form.errors[error][0] }}</h4>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
